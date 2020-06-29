@@ -5,11 +5,12 @@ import {EventDetailsComponent} from './events/event-details/event-details.compon
 import {CreateEventComponent} from './events/create-event.component';
 import {PageNotFoundComponent} from './events/errors/404.component';
 import {EventRouteActivatorService} from './events/event-details/event-route-activator.service';
+import {EventListResolverService} from './events/event-list-resolver.service';
 
 
 const routes: Routes = [
-  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['z'] },
-  { path: 'events', component: EventListComponent },
+  { path: 'events/new', component: CreateEventComponent, canDeactivate: ['canDeactivateCreteEvent'] },
+  { path: 'events', component: EventListComponent, resolve: {events: EventListResolverService} },
   { path: 'events/:id', component: EventDetailsComponent, canActivate: [EventRouteActivatorService]},
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: '404', component: PageNotFoundComponent }

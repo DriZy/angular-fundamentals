@@ -12,6 +12,7 @@ import { EventDetailsComponent } from  './events/event-details/event-details.com
 import { CreateEventComponent } from './events/create-event.component';
 import { PageNotFoundComponent } from './events/errors/404.component';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
+import {EventListResolverService} from './events/event-list-resolver.service';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EventRouteActivatorService } from './events/event-details/event-route-a
     EventService,
     ToastrService,
     EventRouteActivatorService,
+    EventListResolverService,
     {
       provide: 'canDeactivateCreteEvent',
       useValue: checkFormState
@@ -42,7 +44,7 @@ export class AppModule { }
 
 export function checkFormState( component: CreateEventComponent ) {
   if (component.isDirty){
-    return window.confirm('You have not saved this event do you really want to cancel?');
+    return window.confirm('You have not saved this event do you really want to cancel ?');
   }
   return true;
 }
