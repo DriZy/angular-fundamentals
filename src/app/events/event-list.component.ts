@@ -20,7 +20,6 @@
 
    // tslint:disable-next-line:use-lifecycle-interface
    ngOnInit(){
-     // this.eventService.getEvents().subscribe(events => { this.events = events; });
      this.events = this.route.snapshot.data.events;
    }
    handleThumbnailClick(eventName){
